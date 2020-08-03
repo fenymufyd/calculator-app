@@ -1,34 +1,52 @@
 <?php 
   $hasil = "";
-  if (isset($_POST['tambah'])) {
-    $a  = $_POST['a'];
-    $b  = $_POST['b'];
-    $hasil = $a + $b;
-  }elseif (isset($_POST['kurang'])) {
-    $a  = $_POST['a'];
-    $b  = $_POST['b'];
-    $hasil = $a - $b;
-  }elseif (isset($_POST['bagi'])) {
-    $a  = $_POST['a'];
-    $b  = $_POST['b'];
-    $hasil = $a / $b;
-  }elseif (isset($_POST['kali'])) {
-    $a  = $_POST['a'];
-    $b  = $_POST['b'];
-    $hasil = $a * $b;
-  }elseif (isset($_POST['modulus'])) {
-    $a  = $_POST['a'];
-    $b  = $_POST['b'];
-    $hasil = $a % $b;
-  }elseif (isset($_POST['hapus'])) {
-    $a = "";
-    $b = "";
-    $hasil = "";
+  switch(true)
+  {
+    case isset($_POST['tambah']):
+      $a  = $_POST['a'];
+      $b  = $_POST['b'];
+      $hasil = $a + $b;
+    break;
+    case isset($_POST['kurang']):
+      $a  = $_POST['a'];
+      $b  = $_POST['b'];
+      $hasil = $a - $b;
+    break;
+    case isset($_POST['kali']): 
+      $a  = $_POST['a'];
+      $b  = $_POST['b'];
+      $hasil = $a * $b;
+    break;
+    case isset($_POST['bagi']):
+      $a  = $_POST['a'];
+      $b  = $_POST['b'];
+      $hasil = $a / $b;
+    break;
+    case isset($_POST['modulus']):
+      $a  = $_POST['a'];
+      $b  = $_POST['b'];
+      $hasil = $a % $b;
+    break;
+    case isset($_POST['pangkat']):
+      $a=$_POST['a'];
+      $b=$_POST['b'];
+      $result=$a;
+      for ($i=1; $i<$b; $i++) {
+          $result *= $a;
+      }
+      $hasil = $result;
+    break;
+    case isset($_POST['hapus']):
+      $a = "";
+      $b = "";
+      $hasil = "";
+    break;
   }
+  
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -54,9 +72,10 @@
         <td>
           <button type="submit" name="tambah">+</button>
           <button type="submit" name="kurang">-</button>
-          <button type="submit" name="bagi">/</button>
           <button type="submit" name="kali">X</button>
+          <button type="submit" name="bagi">/</button>
           <button type="submit" name="modulus">%</button>
+          <button type="submit" name="pangkat">**</button>
           <button type="submit" name="hapus">C</button>
         </td>
       </tr>
